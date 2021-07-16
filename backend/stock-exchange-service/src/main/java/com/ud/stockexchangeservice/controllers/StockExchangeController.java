@@ -30,4 +30,15 @@ public class StockExchangeController {
     public List<Company> getCompanyListForAStockExchange(@RequestParam Long stockExchangeId) {
         return this.stockExchangeService.getCompanyListForAStockExchange(stockExchangeId);
     }
+
+    // additional routes not mentioned in the project document but are crud operations
+    @PutMapping
+    public StockExchange updateStockExchange(@RequestBody StockExchange stockExchange) {
+        return this.stockExchangeService.updateStockExchange(stockExchange);
+    }
+
+    @DeleteMapping
+    public void deleteStockExchange(@RequestParam Long stockExchangeId) {
+        this.stockExchangeService.deleteStockExchange(stockExchangeId);
+    }
 }

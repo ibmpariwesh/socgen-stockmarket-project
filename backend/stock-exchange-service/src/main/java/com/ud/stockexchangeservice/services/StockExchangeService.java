@@ -37,4 +37,14 @@ public class StockExchangeService {
 
         return companies;
     }
+
+    // additional service methods not mentioned in project report
+
+    public StockExchange updateStockExchange(StockExchange stockExchange) {
+        return this.stockExchangeRepository.save(stockExchange);
+    }
+
+    public void deleteStockExchange(Long stockExchangeId) {
+        this.stockExchangeRepository.deleteById(stockExchangeId);
+    }
 }
