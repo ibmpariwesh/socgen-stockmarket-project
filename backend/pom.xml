@@ -57,6 +57,11 @@
 	<modules>
 		<module>bug-service</module>
 		<module>email-service</module>
+		<module>excel-upload-service</module>
+		<module>sector-data-service</module>
+		<module>stock-exchange-data-service</module>
+		<module>user-service</module>
+		<module>company-data-service</module>
 	</modules>
 	<build>
 		<plugins>
