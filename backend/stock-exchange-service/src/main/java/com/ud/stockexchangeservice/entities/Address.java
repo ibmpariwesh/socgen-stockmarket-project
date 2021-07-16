@@ -1,4 +1,4 @@
-package com.ud.stockexchangeservice.Entities;
+package com.ud.stockexchangeservice.entities;
 
 import javax.persistence.*;
 
@@ -86,5 +86,13 @@ public class Address {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
+    }
+
+    public StockExchange getStockExchange() {
+        return stockExchange;
+    }
+
+    public void setStockExchange(StockExchange stockExchange) {
+        this.stockExchange = stockExchange;
     }
 }

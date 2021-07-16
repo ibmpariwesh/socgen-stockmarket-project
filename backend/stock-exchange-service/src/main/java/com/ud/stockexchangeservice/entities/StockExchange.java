@@ -1,4 +1,4 @@
-package com.ud.stockexchangeservice.Entities;
+package com.ud.stockexchangeservice.entities;
 
 import javax.persistence.*;
 
@@ -54,6 +54,14 @@ public class StockExchange {
 
     public void setRemarks(String remarks) {
         this.remarks = remarks;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 }
 

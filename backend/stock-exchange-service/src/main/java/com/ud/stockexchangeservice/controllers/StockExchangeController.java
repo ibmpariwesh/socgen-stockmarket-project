@@ -1,13 +1,10 @@
 package com.ud.stockexchangeservice.controllers;
 
 
-import com.ud.stockexchangeservice.Entities.StockExchange;
-import com.un.stockexchangeservice.services.StockExchangeService;
+import com.ud.stockexchangeservice.entities.StockExchange;
+import com.ud.stockexchangeservice.services.StockExchangeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value="/stockExchange")
@@ -22,7 +19,7 @@ public class StockExchangeController {
     }
 
     @PostMapping
-    public StockExchange addStockExchange(StockExchange stockExchange) {
-        return stockExchangeService.addStockExchange(stockExchangeEntity);
+    public StockExchange addStockExchange(@RequestBody StockExchange stockExchange) {
+        return stockExchangeService.addStockExchange(stockExchange);
     }
 }
