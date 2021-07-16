@@ -1,4 +1,4 @@
-package com.sgTrain.stockexchange;
+package com.sgtrain.stockexchange;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

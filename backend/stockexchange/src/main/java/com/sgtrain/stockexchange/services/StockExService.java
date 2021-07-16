@@ -1,18 +1,23 @@
-package com.sgTrain.stockexchange.services;
+package com.sgtrain.stockexchange.services;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.sgTrain.stockexchange.entities.StockEx;
-import com.sgTrain.stockexchange.entities.StockExRepository;
+import com.sgtrain.stockexchange.entities.StockEx;
+import com.sgtrain.stockexchange.entities.StockExRepository;
+import com.sgtrain.stockexchange.entities.model.AddressRepository;
+import com.sgtrain.stockexchange.entities.model.StockExAddress;
 
 @Component
 public class StockExService {
 
 	@Autowired
 	StockExRepository exRepository;
+	
+	@Autowired
+	AddressRepository addressRepository;
 	
 	public List<StockEx> getStockEx(){
 		return exRepository.findAll();
@@ -23,9 +28,5 @@ public class StockExService {
 		return true;
 	}
 	
-	public boolean deleteStock(String id) throws Exception{
-		exRepository.deleteById(id);
-		return true;
-	}
 
 }
