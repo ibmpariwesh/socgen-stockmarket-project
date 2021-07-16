@@ -1,6 +1,7 @@
 package com.ud.stockexchangeservice.controllers;
 
 
+import com.ud.stockexchangeservice.entities.Company;
 import com.ud.stockexchangeservice.entities.StockExchange;
 import com.ud.stockexchangeservice.services.StockExchangeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,5 +24,10 @@ public class StockExchangeController {
     @PostMapping
     public StockExchange addStockExchange(@RequestBody StockExchange stockExchange) {
         return stockExchangeService.addStockExchange(stockExchange);
+    }
+
+    @GetMapping("/companyList")
+    public List<Company> getCompanyListForAStockExchange(@RequestParam Long stockExchangeId) {
+        return this.stockExchangeService.getCompanyListForAStockExchange(stockExchangeId);
     }
 }

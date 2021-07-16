@@ -1,13 +1,10 @@
 package com.ud.stockexchangeservice.entities;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 import javax.persistence.*;
 
 @Entity
-@Table(name="stock_exchanges")
-public class StockExchange {
-
+@Table(name="sectors")
+public class Sector {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
     @Column(name="id", length=5)
@@ -16,15 +13,8 @@ public class StockExchange {
     @Column(name="name", length=20)
     private String name;
 
-    @Column(name="brief", length=50)
+    @Column(name="brief", length=100)
     private String brief;
-
-    @Column(name="remarks", length=100)
-    private String remarks;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name="address_id", referencedColumnName = "id")
-    private Address address;
 
     public Long getId() {
         return id;
@@ -49,21 +39,4 @@ public class StockExchange {
     public void setBrief(String brief) {
         this.brief = brief;
     }
-
-    public String getRemarks() {
-        return remarks;
-    }
-
-    public void setRemarks(String remarks) {
-        this.remarks = remarks;
-    }
-
-    public Address getAddress() {
-        return address;
-    }
-
-    public void setAddress(Address address) {
-        this.address = address;
-    }
 }
-
