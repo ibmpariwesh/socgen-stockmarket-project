@@ -6,6 +6,8 @@ import com.ud.stockexchangeservice.services.StockExchangeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping(value="/stockExchange")
 public class StockExchangeController {
@@ -14,8 +16,8 @@ public class StockExchangeController {
     private StockExchangeService stockExchangeService;
 
     @GetMapping
-    public String controllerCheck() {
-        return "This controller is functional!!";
+    public List<StockExchange> getStockExchangeList() {
+        return stockExchangeService.getStockExchangeList();
     }
 
     @PostMapping

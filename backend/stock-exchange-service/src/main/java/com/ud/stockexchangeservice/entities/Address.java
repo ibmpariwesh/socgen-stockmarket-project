@@ -1,5 +1,7 @@
 package com.ud.stockexchangeservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -28,9 +30,6 @@ public class Address {
 
     @Column(name="zipcode", length=10)
     private String zipcode;
-
-    @OneToOne(mappedBy = "address")
-    private StockExchange stockExchange;
 
     public Integer getId() {
         return id;
@@ -86,13 +85,5 @@ public class Address {
 
     public void setZipcode(String zipcode) {
         this.zipcode = zipcode;
-    }
-
-    public StockExchange getStockExchange() {
-        return stockExchange;
-    }
-
-    public void setStockExchange(StockExchange stockExchange) {
-        this.stockExchange = stockExchange;
     }
 }

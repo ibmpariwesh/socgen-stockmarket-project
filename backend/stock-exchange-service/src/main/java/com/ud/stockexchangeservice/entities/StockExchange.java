@@ -1,5 +1,7 @@
 package com.ud.stockexchangeservice.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 import javax.persistence.*;
 
 @Entity
