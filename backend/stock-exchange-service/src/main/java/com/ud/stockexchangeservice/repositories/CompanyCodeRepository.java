@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface CompanyCodeRepository extends JpaRepository<CompanyCode, Long> {
-    List<CompanyCode> findCompanyCodeByStockExchangeId(Long id);
+    List<CompanyCode> findCompanyCodeByStockExchange_Id(Long id);
 }

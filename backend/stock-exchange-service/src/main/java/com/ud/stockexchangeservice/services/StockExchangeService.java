@@ -29,7 +29,7 @@ public class StockExchangeService {
     }
 
     public List<Company> getCompanyListForAStockExchange(Long stockExchangeId) {
-        List<CompanyCode> companyCodes = this.companyCodeRepository.findCompanyCodeByStockExchangeId(stockExchangeId);
+        List<CompanyCode> companyCodes = this.companyCodeRepository.findCompanyCodeByStockExchange_Id(stockExchangeId);
         List<Company> companies = new ArrayList<Company>();
         companyCodes.forEach(companyCode -> {
             companies.add(companyCode.getCompany());
