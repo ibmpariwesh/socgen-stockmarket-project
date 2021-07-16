@@ -16,7 +16,7 @@ public class StockExchange {
 
     @Id
     @GeneratedValue
-    private String id;
+    private Integer id;
     private String name;
     private String brief;
     private String address;

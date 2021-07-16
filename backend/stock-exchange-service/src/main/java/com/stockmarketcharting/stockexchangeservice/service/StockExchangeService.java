@@ -15,6 +15,7 @@ public class StockExchangeService {
     private StockExchangeRepository stockExchangeRepository;
 
     public StockExchange addStockExchange(StockExchange stockExchange) {
+
         if (stockExchange != null) {
             return stockExchangeRepository.save(stockExchange);
         }
@@ -25,7 +26,7 @@ public class StockExchangeService {
         return stockExchangeRepository.findAll();
     }
 
-    public Optional<StockExchange> getStockExchangeById(String stockExchangeId) {
+    public Optional<StockExchange> getStockExchangeById(Integer stockExchangeId) {
         if (stockExchangeId != null) {
             return stockExchangeRepository.findById(stockExchangeId);
         }

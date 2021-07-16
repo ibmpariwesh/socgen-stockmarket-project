@@ -26,8 +26,9 @@ public class StockExchangeController {
         return stockExchangeService.getAllExchanges();
     }
 
+
     @GetMapping("/getStockExchange/{id}")
-    public Optional<StockExchange> getStockExchangeById(@PathVariable String id) {
+    public Optional<StockExchange> getStockExchangeById(@PathVariable Integer id) {
         return stockExchangeService.getStockExchangeById(id);
     }
 
