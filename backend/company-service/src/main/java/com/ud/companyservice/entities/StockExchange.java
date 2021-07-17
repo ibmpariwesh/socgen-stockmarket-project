@@ -1,4 +1,4 @@
-package com.ud.stockexchangeservice.entities;
+package com.ud.companyservice.entities;
 
 import javax.persistence.*;
 
@@ -64,4 +64,3 @@ public class StockExchange {
         this.address = address;
     }
 }
-
