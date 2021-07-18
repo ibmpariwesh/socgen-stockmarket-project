@@ -1,30 +1,12 @@
-package com.ud.companyservice.entities;
+package com.ud.companyservice.dtos;
 
-import javax.persistence.*;
-
-@Entity
-@Table(name="companies")
-public class Company {
-    @Id
-    @GeneratedValue(strategy= GenerationType.AUTO)
-    @Column(name="id", length=5)
+public class CompanyDto {
     private Long id;
-
-    @Column(name="name", length=50)
     private String name;
-
-    @Column(name="turnover", length=10)
     private Long turnover;
-
-    @Column(name="ceo", length=20)
     private String ceo;
-
-    @Column(name="brief", length=100)
     private String brief;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "sector_id")
-    private Sector sector;
+    private Long sectorId;
 
     public Long getId() {
         return id;
@@ -66,11 +48,11 @@ public class Company {
         this.brief = brief;
     }
 
-    public Sector getSector() {
-        return sector;
+    public Long getSectorId() {
+        return sectorId;
     }
 
-    public void setSector(Sector sector) {
-        this.sector = sector;
+    public void setSectorId(Long sectorId) {
+        this.sectorId = sectorId;
     }
 }
