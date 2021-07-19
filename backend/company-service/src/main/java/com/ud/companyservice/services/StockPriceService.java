@@ -1,6 +1,5 @@
 package com.ud.companyservice.services;
 
-import com.ud.companyservice.dtos.IpoDetailDto;
 import com.ud.companyservice.dtos.StockPriceDto;
 import com.ud.companyservice.entities.StockPrice;
 import com.ud.companyservice.repositories.CompanyRepository;
@@ -9,9 +8,6 @@ import com.ud.companyservice.repositories.StockPriceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.time.Instant;
-import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;

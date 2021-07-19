@@ -1,7 +1,6 @@
 package com.ud.companyservice.controllers;
 
 import com.ud.companyservice.dtos.IpoDetailDto;
-import com.ud.companyservice.entities.IpoDetail;
 import com.ud.companyservice.services.IpoDetailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
