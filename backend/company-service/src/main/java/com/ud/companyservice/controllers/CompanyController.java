@@ -16,8 +16,13 @@ public class CompanyController {
     private CompanyService companyService;
 
     @GetMapping(value="/companyById")
-    public Company getCompanyById(@RequestParam Long companyId) {
+    public CompanyDto getCompanyById(@RequestParam Long companyId) {
         return this.companyService.getCompanyById(companyId);
+    }
+
+    @GetMapping(value = "/matchingCompanyList")
+    public List<CompanyDto> getMatchingCompanies(@RequestParam String companyName) {
+        return this.companyService.getMatchingCompanyList(companyName);
     }
 
     // additional routes not mentioned in the project document but are crud operations

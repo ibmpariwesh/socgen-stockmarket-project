@@ -21,12 +21,12 @@ public class StockPrice {
     @Column(name = "time")
     private Date time;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "company_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "company_id")
     private Company company;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "stock_exchange_id", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "stock_exchange_id")
     private StockExchange stockExchange;
 
     public Long getId() {
