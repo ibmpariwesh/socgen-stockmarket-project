@@ -1,12 +1,13 @@
-package com.example.bug.project.email;
+package com.nehajha;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class EmailApplication {
 
+public class SectorApplication {
 	public static void main(String[] args) {
-		SpringApplication.run(EmailApplication.class, args);
+		SpringApplication.run(SectorApplication.class, args);
 	}
+
 }
