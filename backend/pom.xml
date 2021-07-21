@@ -60,6 +60,7 @@
 		<module>sector-service</module>
 		<module>company-service</module>
 		<module>uploadexcel-service</module>
+		<module>Sample</module>
 	</modules>
 	<build>
 		<plugins>
