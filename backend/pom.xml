@@ -63,6 +63,8 @@
 		<module>stock-exchange-service</module>
 		<module>relationship-service</module>
 		<module>board-members-service</module>
+		<module>user-service</module>
+		<module>ipo-service</module>
 	</modules>
 	<build>
 		<plugins>

@@ -77,6 +77,7 @@ public class RelationController {
     }
 
     //handles company to Ipo relationship
+
     @GetMapping("/getAllCompanyToIpo")
     public List<CompanyToIpo> getAllCompanyToIpo(){
         return relationService.getAllCompanyToIpo();
@@ -91,8 +92,10 @@ public class RelationController {
     public void deleteCompanyToIpoByIds(@PathVariable int companyId,@PathVariable int stockExchangeId){
         relationService.deleteCompanyToIpoByCompanyIdAndExchangeId(companyId,stockExchangeId);
     }
-    @DeleteMapping("/deleteCompanyToIpoBycompanyId/{companyId}")
+
+    @DeleteMapping("/deleteCompanyToIpoByCompanyId/{companyId}")
     public void deleteCompanyToIpoByCompanyId(@PathVariable int companyId){
         relationService.deleteCompanyToIpoByCompanyId(companyId);
     }
+
 }

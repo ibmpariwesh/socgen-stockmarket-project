@@ -4,6 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.reactive.function.client.WebClient;
 import socgen.iiht.companyservice.model.Company;
@@ -11,12 +13,14 @@ import socgen.iiht.companyservice.repository.CompanyRepo;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 @SpringBootApplication
+@EnableEurekaClient
 @EnableSwagger2
 public class CompanyServiceApplication implements CommandLineRunner {
 	@Autowired
 	private CompanyRepo companyRepo;
 
 	@Bean
+	@LoadBalanced
 	public WebClient.Builder getWebClientBuilder(){
 		return WebClient.builder();
 	}
