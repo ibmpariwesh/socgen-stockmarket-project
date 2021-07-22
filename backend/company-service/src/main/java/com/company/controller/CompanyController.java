@@ -17,7 +17,7 @@ import com.company.entity.Company;
 import com.company.service.CompanyService;
 
 @RestController
-@RequestMapping("company")
+@RequestMapping("/company")
 public class CompanyController {
 	@Autowired
 	private CompanyService companyService;
