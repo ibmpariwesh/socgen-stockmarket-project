@@ -1,15 +1,14 @@
-package socgen.iiht.authenticationservice;
+package socgen.iiht.userservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import socgen.iiht.authenticationservice.model.Credentials;
-import socgen.iiht.authenticationservice.repository.CredRepo;
+import socgen.iiht.userservice.model.Credentials;
+import socgen.iiht.userservice.repository.CredRepo;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -30,7 +29,8 @@ public class MyUserDetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("user name not found");
         }
         List<GrantedAuthority> ls=new ArrayList<>();
-        ls.add(new SimpleGrantedAuthority(credentials.getRole()));
+        System.out.println(credentials.getRole());
+        ls.add((GrantedAuthority) () -> credentials.getRole());
         return new User(credentials.getUserName(),credentials.getPassword(),ls);
     }
 }

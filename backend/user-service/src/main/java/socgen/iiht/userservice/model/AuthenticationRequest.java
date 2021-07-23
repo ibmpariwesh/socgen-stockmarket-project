@@ -1,4 +1,4 @@
-package socgen.iiht.authenticationservice.model;
+package socgen.iiht.userservice.model;
 
 import java.io.Serializable;
 

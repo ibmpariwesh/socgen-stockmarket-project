@@ -1,16 +1,20 @@
-package socgen.iiht.authenticationservice.controller;
+package socgen.iiht.userservice.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.web.bind.annotation.*;
-import socgen.iiht.authenticationservice.MyUserDetailsService;
-import socgen.iiht.authenticationservice.model.AuthenticationRequest;
-import socgen.iiht.authenticationservice.util.JwtUtil;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
+import org.springframework.web.bind.annotation.RestController;
+import socgen.iiht.userservice.MyUserDetailsService;
+import socgen.iiht.userservice.model.AuthenticationRequest;
+import socgen.iiht.userservice.util.JwtUtil;
 
 @RestController
-public class AuthenticationController {
+public class AuthController {
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -28,4 +32,10 @@ public class AuthenticationController {
         String jwt=jwtUtil.generateToken(myUserDetailsService.loadUserByUsername(authenticationRequest.getUsername()));
         return jwt;
     }
+
+//    @PostMapping("/validate_jwt")
+//    public boolean validateJwt(@RequestHeader(name="jwtToken") String token){
+//        UserDetails userDetails =myUserDetailsService.loadUserByUsername(jwtUtil.extractUsername(token));
+//        return jwtUtil.validateToken(token,userDetails);
+//    }
 }

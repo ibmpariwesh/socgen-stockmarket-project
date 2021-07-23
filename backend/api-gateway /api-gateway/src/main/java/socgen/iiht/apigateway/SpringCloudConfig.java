@@ -13,7 +13,6 @@ public class SpringCloudConfig {
     public RouteLocator customRouteLocator(RouteLocatorBuilder builder){
         return builder.routes()
                 .route("company-service",(r)->r.path("/company/**")
-
                         .uri("lb://COMPANY-SERVICE"))
                 .route(r->r.path("/stock_exchange/**")
                 .uri("lb://STOCK-EXCHANGE-SERVICE"))

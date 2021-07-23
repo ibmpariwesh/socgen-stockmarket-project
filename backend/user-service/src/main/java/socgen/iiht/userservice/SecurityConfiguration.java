@@ -1,7 +1,9 @@
-package socgen.iiht.authenticationservice;
+package socgen.iiht.userservice;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cloud.client.loadbalancer.LoadBalanced;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -11,9 +13,11 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import socgen.iiht.authenticationservice.util.JwtRequestFilter;
+import socgen.iiht.userservice.util.JwtRequestFilter;
 
 @EnableWebSecurity
+@Configuration
+
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Autowired
     private MyUserDetailsService myUserDetailsService;
@@ -25,11 +29,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     }
 
     @Override
+    @LoadBalanced
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .cors().and()
                 .authorizeRequests()
+
+                .antMatchers("/company/get_companies").hasAnyAuthority("ROLE_ADMIN","ROLE_USER")
+                .antMatchers("/company/add_company").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/company/deleteCompanyById/**").hasAuthority("ROLE_ADMIN")
+                .antMatchers("/company/update_company/**").hasAuthority("ROLE_ADMIN")
+
                 .antMatchers("/jwt-request").permitAll()
+
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestfilter, UsernamePasswordAuthenticationFilter.class);

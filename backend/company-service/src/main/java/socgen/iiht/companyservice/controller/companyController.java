@@ -7,6 +7,7 @@ import org.springframework.web.reactive.function.client.WebClient;
 import socgen.iiht.companyservice.model.Company;
 import socgen.iiht.companyservice.service.CompanyService;
 
+import javax.servlet.http.HttpServletRequest;
 import java.time.Duration;
 import java.util.List;
 
@@ -15,12 +16,14 @@ import java.util.List;
 public class companyController {
     @Autowired
     private CompanyService companyService;
-
+    @Autowired
+    private HttpServletRequest httpServletRequest;
     @Autowired
     WebClient.Builder webClientBuilder;
 
     @GetMapping("/get_companies")
     public List<Company> getAllCompanies(){
+        System.out.println(httpServletRequest.getHeader("Authorization"));
         return companyService.getCompaniesList();
     }
 
@@ -67,5 +70,10 @@ public class companyController {
         }
 
 
+    }
+
+    @PostMapping("/update_company")
+    public void updateCompany(@RequestBody Company company){
+        companyService.addCompany(company);
     }
 }
