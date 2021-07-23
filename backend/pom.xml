@@ -55,6 +55,9 @@
 		<module>uploadexcel-service</module>
 		<module>Sample</module>
 		<module>eureka-service</module>
+		<module>api-gateway-service</module>
+		<module>apigateway-service</module>
+		<module>config-service</module>
 	</modules>
 	<build>
 		<plugins>

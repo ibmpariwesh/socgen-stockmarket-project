@@ -29,14 +29,15 @@ public class CompanyApplication {
 public Docket swaggerConfig() {
 	return new Docket(DocumentationType.SWAGGER_2)
 			.select()
-			.apis(RequestHandlerSelectors.basePackage("com.nehajha"))
+			.apis(RequestHandlerSelectors.basePackage("com.company"))
+			
 			.build()
 			.apiInfo(apiDetails());
 }
 private ApiInfo apiDetails() {
 	return new ApiInfo(
-			"Sector Microservice API",
-			"API Documentation for Sector Microservice",
+			"Company Microservice API",
+			"API Documentation for Company Microservice",
 			"1.0",
 			"Free to use",
 			new springfox.documentation.service.Contact("Neha Jha", "https://github.com/2NJ7", "2799nehajha@gmail.com"),

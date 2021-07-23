@@ -42,6 +42,7 @@ public class ExcelController {
 		List<ExcelDto> failedInserts = restTemplate.postForEntity(apiUrl, data, ArrayList.class).getBody();
 		if(failedInserts.size() == 0) {
 			return ResponseEntity.ok(failedInserts);
+		
 		} else {
 			return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(failedInserts);
 		}

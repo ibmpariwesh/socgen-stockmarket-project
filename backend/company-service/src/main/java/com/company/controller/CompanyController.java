@@ -21,6 +21,10 @@ import com.company.service.CompanyService;
 public class CompanyController {
 	@Autowired
 	private CompanyService companyService;
+	@GetMapping("")
+	public String CheckWork() {
+		return "Working Fine!";
+	}
 	
 	@GetMapping("/getCompany")
 	public ResponseEntity<List<Company>> getAllCompanies(){
