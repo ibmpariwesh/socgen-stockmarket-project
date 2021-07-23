@@ -40,10 +40,26 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers("/company/deleteCompanyById/**").hasAuthority("ROLE_ADMIN")
                 .antMatchers("/company/update_company/**").hasAuthority("ROLE_ADMIN")
 
+                .antMatchers("/stock_exchange/get_all").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+                .antMatchers("/stock_exchange/**").hasAuthority("ROLE_ADMIN")
+
+                .antMatchers("/sector/get_all_sectors").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+                .antMatchers("/sector/**").hasAuthority("ROLE_ADMIN")
+
+                .antMatchers("/ipodetails/get_all_ipo_details").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+                .antMatchers("/ipodetails/**").hasAuthority("ROLE_ADMIN")
+
+                .antMatchers("/ipodetails/get_all_ipo_details").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+                .antMatchers("/ipodetails/**").hasAuthority("ROLE_ADMIN")
+
+                .antMatchers("/er_maps/**").hasAnyAuthority("ROLE_USER","ROLE_ADMIN")
+
+
                 .antMatchers("/jwt-request").permitAll()
 
                 .anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
+
         http.addFilterBefore(jwtRequestfilter, UsernamePasswordAuthenticationFilter.class);
     }
     @Bean
