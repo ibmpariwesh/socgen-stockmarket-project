@@ -18,6 +18,7 @@ public class CompanyService {
 
     public void addCompany(Company company){
         companyRepo.save(company);
+
     }
 
     public void deleteCompany(int id){

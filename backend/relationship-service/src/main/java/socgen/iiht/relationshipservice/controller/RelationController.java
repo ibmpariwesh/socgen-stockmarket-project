@@ -16,11 +16,21 @@ public class RelationController {
     @Autowired
     private RelationService relationService;
 
-    //Handles company-stockexchange relation
+    //Handles company-stock exchange relation
 
     @GetMapping("/get_company_exchange")
     public List<CompanyToStockExchange> getAllCompanyToExchange(){
         return relationService.getAllCompanyToExchange();
+    }
+
+    @GetMapping("/getExchangesForCompany/{id}")
+    public List<Integer> exchangesForCompId(@PathVariable int id){
+        return relationService.getAllExchangeIdByCompId(id).stream().map((item)-> item.getStockId()).toList();
+    }
+
+    @GetMapping("/getCompaniesForExchangeId/{id}")
+    public List<Integer> companiesForExchangeId(@PathVariable int id){
+        return relationService.getAllCompanyByExchangeId(id).stream().map((item)->item.getCompanyId()).toList();
     }
 
     @PostMapping("/add_company_exchange")

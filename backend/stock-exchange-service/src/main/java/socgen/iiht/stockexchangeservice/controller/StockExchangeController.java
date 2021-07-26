@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.reactive.function.client.WebClient;
 import socgen.iiht.stockexchangeservice.model.StockExchange;
+import socgen.iiht.stockexchangeservice.repository.StockExchangeRepo;
 import socgen.iiht.stockexchangeservice.service.StockExchangeService;
 
 import java.time.Duration;
@@ -16,6 +17,8 @@ public class StockExchangeController {
     @Autowired
     private StockExchangeService stockExchangeService;
     @Autowired
+    private StockExchangeRepo repo;
+    @Autowired
     WebClient.Builder webClientBuilder;
     @GetMapping("/get_all")
     public List<StockExchange> getStockExchanges(){
@@ -26,6 +29,12 @@ public class StockExchangeController {
     public StockExchange getStockExchangebyId(@PathVariable int id){
         return stockExchangeService.getExchangeById(id);
     }
+
+    @GetMapping("/getName/{id}")
+    public String getName(@PathVariable int id){
+        return repo.findStockExchangeById(id).getName();
+    }
+
     @PostMapping("/add_exchange")
     public void addStockExchange(@RequestBody StockExchange stockExchange){
         stockExchangeService.postStockExchange(stockExchange);

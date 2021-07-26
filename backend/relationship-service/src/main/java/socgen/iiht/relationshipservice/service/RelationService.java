@@ -29,9 +29,19 @@ public class RelationService {
     public List<CompanyToStockExchange> getAllCompanyToExchange(){
         return companyToStockExchangeRepo.findAll();
     }
+
+    public List<CompanyToStockExchange> getAllExchangeIdByCompId(int id){
+        return companyToStockExchangeRepo.findAllByCompanyId(id);
+    }
+
+    public List<CompanyToStockExchange> getAllCompanyByExchangeId(int id){
+        return  companyToStockExchangeRepo.findAllByStockId(id);
+    }
+
     public void addCompanyToStockExchange(CompanyToStockExchange companyToStockExchange){
         companyToStockExchangeRepo.save(companyToStockExchange);
     }
+
     @Transactional
     public void deleteCompanyToStockExchangeByCompanyId(int id){
         companyToStockExchangeRepo.deleteAllByCompanyId(id);

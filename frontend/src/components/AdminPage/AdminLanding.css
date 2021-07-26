@@ -1,0 +1,18 @@
+.nav-hover {
+  text-shadow: 0 0 5px #ff0000;
+}
+.nav-linkin {
+  color: white !important;
+}
+a {
+  text-decoration: none;
+}
+.route-link {
+  text-decoration: none;
+}
+.nvbr {
+  z-index: +3;
+}
+.edit-link {
+  text-decoration: none;
+}

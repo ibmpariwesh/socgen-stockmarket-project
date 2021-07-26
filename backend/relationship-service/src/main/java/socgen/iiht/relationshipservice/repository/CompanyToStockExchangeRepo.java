@@ -8,7 +8,9 @@ import java.util.List;
 
 @Repository
 public interface CompanyToStockExchangeRepo extends JpaRepository<CompanyToStockExchange,Integer> {
-    public List<CompanyToStockExchange> findAll();
-    public void deleteAllByCompanyId(int id);
-    public void deleteAllByStockId(int id);
+    List<CompanyToStockExchange> findAll();
+    List<CompanyToStockExchange> findAllByStockId(int stockId);
+    List<CompanyToStockExchange> findAllByCompanyId(int companyId);
+    void deleteAllByCompanyId(int id);
+    void deleteAllByStockId(int id);
 }

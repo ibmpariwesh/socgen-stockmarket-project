@@ -24,11 +24,14 @@ public class Company {
     private String description;
     @Column(length = 10)
     private String stockCode;
+    @Column(length = 200)
+    private String imageLink;
 
-    public Company(String name, String ceo, String description, String stockCode) {
+    public Company(String name, String ceo, String description, String stockCode, String imageLink) {
         this.name = name;
         this.ceo = ceo;
         this.description = description;
         this.stockCode = stockCode;
+        this.imageLink = imageLink;
     }
 }
