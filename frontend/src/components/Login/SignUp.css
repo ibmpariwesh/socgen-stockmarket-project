@@ -1,0 +1,19 @@
+.ipt {
+  width: 30%;
+  margin: 1vh 35%;
+}
+.lbl-pos {
+  color: white;
+  float: left;
+  margin: 0 35%;
+}
+.btn-pos {
+  float: left;
+  margin: 2% 60%;
+}
+.hd {
+  color: white;
+  /* float: left; */
+  /* display: inline; */
+  margin: 5% 5%;
+}
