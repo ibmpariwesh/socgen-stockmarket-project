@@ -20,7 +20,7 @@ import { AddExchangeComponent } from './components/add-exchange/add-exchange.com
 import { CompanyComponent } from './components/company/company.component';
 import { ExchangeComponent } from './components/exchange/exchange.component';
 import { IpoComponent } from './components/ipo/ipo.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
+
 import { SectorComponent } from './components/sector/sector.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { CompanyService } from './services/company.service';
@@ -37,7 +37,7 @@ import { CompanyService } from './services/company.service';
     CompanyComponent,
     ExchangeComponent,
     IpoComponent,
-    NotFoundComponent,
+    
     SectorComponent,
     SignupComponent
     

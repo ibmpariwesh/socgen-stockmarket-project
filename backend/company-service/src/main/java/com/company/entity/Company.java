@@ -26,7 +26,7 @@ public class Company {
 	public Company() {
 		super();
 	}
-	public Company(int id, String name, long turnover, String ceo, String brief, String bod, Sector sector) {
+	public Company(int id, String name, long turnover, String ceo, String brief, String bod,Sector sector) {
 		super();
 		this.id = id;
 		this.name = name;
