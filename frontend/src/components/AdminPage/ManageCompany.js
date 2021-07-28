@@ -1,11 +1,12 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 
 import { Button } from "react-bootstrap";
 import "./ManageCompany.css";
 import EditCompany from "./EditCompany";
+import AddCompany from "./AddCompany";
 
 function ManageCompany(props) {
   const Token = useSelector((state) => state.jwtToken);
@@ -26,8 +27,29 @@ function ManageCompany(props) {
         setCompList(resp.data);
         setShowCompany(true);
       });
-  }, [showCompany]);
+  }, []);
 
+  const deleteHandler = (id) => {
+    axios
+      .delete("http://localhost:9999/company/deleteCompanyById/" + id, {
+        headers: {
+          authorization: "Bearer " + Token,
+        },
+      })
+      .then(() => {
+        axios
+          .get("http://localhost:9999/company/get_companies/", {
+            headers: {
+              authorization: "Bearer " + Token,
+            },
+          })
+          .then((resp) => {
+            console.log(resp.data);
+            setCompList(resp.data);
+            setShowCompany(true);
+          });
+      });
+  };
   const editStyle = {
     // display: "inline",
     position: "absolute",
@@ -46,15 +68,7 @@ function ManageCompany(props) {
           </div>
           <h3 className="company-text">{item.name}</h3>
           <h5 className="company-text2">{item.fetchedSE}</h5>
-          {/* <Button
-            variant="primary"
-            className="btn-edit"
-            onClick={() => {
-              editHandler(item);
-            }}
-          >
-            Edit
-          </Button> */}
+
           <Link
             to="/company/edit"
             style={editStyle}
@@ -65,16 +79,34 @@ function ManageCompany(props) {
               });
             }}
           >
-            edit
+            <Button variant="primary" className="btn-edit">
+              Edit
+            </Button>
           </Link>
-          <Button variant="danger" className="btn-delete">
-            Delete
-          </Button>
+          <Link to="/manage_company">
+            <Button
+              variant="danger"
+              className="btn-delete"
+              onClick={() => {
+                deleteHandler(item.id);
+              }}
+            >
+              Delete
+            </Button>
+          </Link>
         </div>
       );
     });
   }
-  return <div className="list-hold">{compList !== null && newList}</div>;
+  return (
+    <div className="list-hold">
+      <Link to="/company/add_company">
+        <button className="btn btn-success btn-add">Add Company</button>
+      </Link>
+
+      {compList !== null && newList}
+    </div>
+  );
 }
 
 export default ManageCompany;

@@ -16,7 +16,7 @@ public class Company {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-    @Column(length = 25)
+    @Column(length = 25,unique = true)
     private String name;
     @Column(length = 25)
     private String ceo;

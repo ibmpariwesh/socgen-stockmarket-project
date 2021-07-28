@@ -1,0 +1,17 @@
+.form-border {
+  margin: 15vh;
+}
+.box-editx {
+  display: block;
+  width: 400px;
+}
+.s-btn {
+  float: left;
+  margin: 0% 10%;
+  width: 15%;
+}
+.select-p {
+  width: 400px;
+  margin: 1.5% 0%;
+  /* width: %; */
+}

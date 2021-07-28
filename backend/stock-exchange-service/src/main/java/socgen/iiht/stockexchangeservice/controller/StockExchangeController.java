@@ -30,6 +30,11 @@ public class StockExchangeController {
         return stockExchangeService.getExchangeById(id);
     }
 
+    @GetMapping("/getByName/{name}")
+    public StockExchange getStockExchangeByName(@PathVariable String name){
+        return repo.getStockExchangeByName(name);
+    }
+
     @GetMapping("/getName/{id}")
     public String getName(@PathVariable int id){
         return repo.findStockExchangeById(id).getName();

@@ -7,6 +7,7 @@ import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
 import socgen.iiht.companyservice.dto.CompanyDTO;
 import socgen.iiht.companyservice.model.Company;
+import socgen.iiht.companyservice.repository.CompanyRepo;
 import socgen.iiht.companyservice.service.CompanyService;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,6 +21,9 @@ import java.util.List;
 public class companyController {
     @Autowired
     private CompanyService companyService;
+
+    @Autowired
+    private CompanyRepo companyRepo;
 
     @Autowired
     WebClient.Builder webClientBuilder;
@@ -38,6 +42,10 @@ public class companyController {
         return dtols;
     }
 
+    @GetMapping("/getIdByName/{name}")
+    public Integer getIdByName(@PathVariable String name){
+        return companyRepo.findCompanyByName(name).getId();
+    }
 
     @PostMapping("/add_company")
     public void addCompany(@RequestBody Company company){

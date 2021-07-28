@@ -24,10 +24,13 @@ public class FeedController {
         List<Integer> ls= restTemplate.getForObject("http://localhost:6063/er_maps/getExchangesForCompany/"+id, List.class);
         int itr=0;
         String temp;
+        System.out.println(ls);
         for(int exId:ls){
-            if(itr!=0 && itr<ls.size()){
+            if(exId%2==0)continue;
+            if(itr!=0 && itr<ls.size()) {
                 str+=",";
             }
+            if(exId==0)return str;
            temp=restTemplate.getForObject("http://localhost:6060/stock_exchange/getName/"+ exId, String.class);
 //            System.out.println(temp);
             if(temp!=null){

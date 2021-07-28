@@ -8,8 +8,8 @@ import java.util.List;
 
 @Repository
 public interface StockExchangeRepo extends JpaRepository<StockExchange,Integer> {
-    public List<StockExchange> findAll();
-    public StockExchange findStockExchangeById(int id);
-    public void deleteStockExchangeById(int id);
-
+    List<StockExchange> findAll();
+    StockExchange findStockExchangeById(int id);
+    void deleteStockExchangeById(int id);
+    StockExchange getStockExchangeByName(String name);
 }

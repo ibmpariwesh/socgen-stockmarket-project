@@ -1,7 +1,9 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-
+import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import ManageCompany from "./ManageCompany";
 import "./EditCompany.css";
 function EditCompany() {
   const [company, setCompany] = useState();
@@ -10,7 +12,7 @@ function EditCompany() {
     setCompany(comp);
   }, []);
   // console.log(props.comp);
-
+  let history = useHistory();
   const Token = useSelector((state) => state.jwtToken);
   // console.log(company);
   const nameHandler = (e) => {
@@ -82,11 +84,15 @@ function EditCompany() {
     e.preventDefault();
     delete company["fetchedSE"];
     console.log(company);
-    axios.post("http://localhost:9999/company/update_company", company, {
-      headers: {
-        Authorization: "Bearer " + Token,
-      },
-    });
+    axios
+      .post("http://localhost:9999/company/update_company", company, {
+        headers: {
+          Authorization: "Bearer " + Token,
+        },
+      })
+      .then(() => {
+        history.push("/manage_company");
+      });
     // props.refresh();
   };
   // return (
@@ -96,61 +102,65 @@ function EditCompany() {
   // );
   return (
     <div className="edit-box">
-      <form>
-        <div className="form-group">
-          <label className="label-white">Company Name</label>
-          <input
-            type="text"
-            className="form-control"
-            onChange={nameHandler}
-            aria-describedby="emailHelp"
-            placeholder={comp.name}
-          />
-        </div>
-        <div className="form-group">
-          <label className="label-white">CEO</label>
+      {/* <form> */}
+      <div className="form-group">
+        <label className="label-white">Company Name</label>
+        <input
+          type="text"
+          className="form-control"
+          onChange={nameHandler}
+          aria-describedby="emailHelp"
+          placeholder={comp.name}
+        />
+      </div>
+      <div className="form-group">
+        <label className="label-white">CEO</label>
 
-          <input
-            type="text"
-            onChange={ceoHandler}
-            className="form-control"
-            placeholder={comp.ceo}
-          />
-        </div>
-        <div className="form-group">
-          <label className="label-white">Description</label>
-          <input
-            type="text"
-            onChange={descriptionHandler}
-            className="form-control"
-            placeholder={comp.description}
-          />
-        </div>
-        <div className="form-group">
-          <label className="label-white">Stock code</label>
-          <input
-            type="text"
-            onChange={stockCodeHandler}
-            className="form-control"
-            placeholder={comp.stockCode}
-          />
-        </div>
-        <div className="form-group">
-          <label className="label-white">Image Link</label>
-          <input
-            onChange={imageLinkHandler}
-            type="text"
-            className="form-control"
-            placeholder={comp.imageLink}
-          />
-        </div>
-        <small className="label-white">
-          * empty field's details will not be updated{" "}
-        </small>
+        <input
+          type="text"
+          onChange={ceoHandler}
+          className="form-control"
+          placeholder={comp.ceo}
+        />
+      </div>
+      <div className="form-group">
+        <label className="label-white">Description</label>
+        <input
+          type="text"
+          onChange={descriptionHandler}
+          className="form-control"
+          placeholder={comp.description}
+        />
+      </div>
+      <div className="form-group">
+        <label className="label-white">Stock code</label>
+        <input
+          type="text"
+          onChange={stockCodeHandler}
+          className="form-control"
+          placeholder={comp.stockCode}
+        />
+      </div>
+      <div className="form-group">
+        <label className="label-white">Image Link</label>
+        <input
+          onChange={imageLinkHandler}
+          type="text"
+          className="form-control"
+          placeholder={comp.imageLink}
+        />
+      </div>
+      <small className="label-white">
+        * empty field's details will not be updated{" "}
+      </small>
+      <Link to="/manage_company">
         <button className="btn btn-primary btn-sbt" onClick={submitHandler}>
           Submit
         </button>
-      </form>
+      </Link>
+      <Route path="/manage_company" component={ManageCompany} exact />
+
+      {/* </form> */}
     </div>
   );
 }
