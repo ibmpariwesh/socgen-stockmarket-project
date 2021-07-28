@@ -7,9 +7,11 @@ import { Button } from "react-bootstrap";
 import "./ManageCompany.css";
 import EditCompany from "./EditCompany";
 import AddCompany from "./AddCompany";
+import LoginPage from "../Login/LoginPage";
 
 function ManageCompany(props) {
   const Token = useSelector((state) => state.jwtToken);
+
   const [compList, setCompList] = useState(null);
   const [showCompany, setShowCompany] = useState(false);
   const [showEdit, setShowEdit] = useState(false);
@@ -28,6 +30,8 @@ function ManageCompany(props) {
         setShowCompany(true);
       });
   }, []);
+  console.log(Token);
+  if (Token === "") return <LoginPage />;
 
   const deleteHandler = (id) => {
     axios

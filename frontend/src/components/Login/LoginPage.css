@@ -108,3 +108,8 @@ input.user-password1 {
   margin-top: 15px;
   /* margin-left: -20px; */
 }
+
+.btn-sup {
+  position: absolute;
+  margin: 2vh 40%;
+}

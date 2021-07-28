@@ -23,37 +23,20 @@ function ManageExchange() {
     var newList = xList.map((item, index) => {
       return (
         <div className="comp-hold" key={index}>
-          <div className="image-cropper">
-            {/* <img src={item.imageLink} className="rounded c-img" /> */}
-          </div>
+          <div className="image-cropper"></div>
           <h3 className="company-text">{item.name}</h3>
           <h5 className="company-text2x">{item.brief}</h5>
-
-          {/* <Link
-              to="/company/edit"
-              style={editStyle}
-              onClick={() => {
-                dispatch({
-                  type: "EDIT_COMPANY",
-                  cacheComp: item,
-                });
-              }}
-            >
-              <Button variant="primary" className="btn-edit">
-                Edit
-              </Button>
-            </Link>
-            <Link to="/manage_company">
-              <Button
-                variant="danger"
-                className="btn-delete"
-                onClick={() => {
-                  deleteHandler(item.id);
-                }}
-              >
-                Delete
-              </Button>
-            </Link> */}
+          <Link
+            to={{
+              pathname: "/listed_companies",
+              query: { id: item.id, name: item.name },
+            }}
+            cid={item.id}
+          >
+            <button className="btn btn-primary btn-editx">
+              Listed Companies
+            </button>
+          </Link>
         </div>
       );
     });

@@ -41,6 +41,11 @@ public class companyController {
         }
         return dtols;
     }
+    @GetMapping("/getCompanyById/{id}")
+    public CompanyDTO getCompanyById(@PathVariable int id){
+        Company comp=companyRepo.findCompanyById(id);
+        return new CompanyDTO(comp.getId(),comp.getName(),comp.getCeo(),comp.getDescription(), comp.getStockCode(), comp.getImageLink(),"");
+    }
 
     @GetMapping("/getIdByName/{name}")
     public Integer getIdByName(@PathVariable String name){

@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import socgen.iiht.userservice.MyUserDetailsService;
 import socgen.iiht.userservice.model.AuthenticationRequest;
+import socgen.iiht.userservice.model.Credentials;
+import socgen.iiht.userservice.repository.CredRepo;
 import socgen.iiht.userservice.util.JwtUtil;
 
 @RestController
@@ -21,6 +23,10 @@ public class AuthController {
     private JwtUtil jwtUtil;
     @Autowired
     private MyUserDetailsService myUserDetailsService;
+
+    @Autowired
+    private CredRepo credRepo;
+
     @PostMapping("/jwt-request")
     public String getJwtToken(@RequestBody AuthenticationRequest authenticationRequest){
         try{
@@ -31,6 +37,10 @@ public class AuthController {
         }
         String jwt=jwtUtil.generateToken(myUserDetailsService.loadUserByUsername(authenticationRequest.getUsername()));
         return jwt;
+    }
+    @PostMapping("/post_cred")
+    public void postUser(@RequestBody Credentials credentials){
+        credRepo.save(credentials);
     }
 
 //    @PostMapping("/validate_jwt")

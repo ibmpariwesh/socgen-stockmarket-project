@@ -14,7 +14,7 @@ import java.util.function.Function;
 
 @Service
 public class JwtUtil {
-    private String SECRET_KEY = "verystrongkey";
+    private String SECRET_KEY = "verystrongkey";//this is a serious vulnerability. I understand
 
     public String extractUsername(String token) {
         return extractClaim(token, Claims::getSubject);
@@ -38,7 +38,7 @@ public class JwtUtil {
 
     public String generateToken(UserDetails userDetails) {
         Map<String, Object> claims = new HashMap<>();
-//        claims.put("authority",userDetails.getAuthorities());
+        claims.put("authority",userDetails.getAuthorities());
 //        System.out.println(userDetails.getAuthorities());
         return createToken(claims, userDetails.getUsername());
     }

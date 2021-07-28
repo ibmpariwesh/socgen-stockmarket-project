@@ -8,6 +8,7 @@ import "./ManageCompany.css";
 import AddCompany from "./AddCompany";
 import AddExchange from "./AddExchange";
 import ManageExchange from "./ManageExchange";
+import ListedCompanies from "./ListedCompanies";
 
 function AdminLanding() {
   const [showCompany, setShowCompany] = useState(true);
@@ -71,6 +72,7 @@ function AdminLanding() {
         <Route path="/company/edit" component={EditCompany} exact />
         <Route path="/company/add_company" component={AddCompany} exact />
         <Route path="/exchange/add_exchange" component={AddExchange} exact />
+        <Route path="/listed_companies" component={ListedCompanies} exact />
       </div>
     </Router>
   );

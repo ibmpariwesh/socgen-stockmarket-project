@@ -5,9 +5,11 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.reactive.function.client.WebClient;
+import socgen.iiht.apicomposer.dto.CompanyDTO;
 import socgen.iiht.apicomposer.dto.StockExchange;
 
 import java.time.Duration;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -39,5 +41,18 @@ public class FeedController {
             itr++;
         }
         return str;
+    }
+    @GetMapping("/getCompForEx/{id}")
+    public List<CompanyDTO> getCompanyForEx(@PathVariable String id){
+        List<CompanyDTO> dtols=new ArrayList<>();
+        List<Integer> ls= restTemplate.getForObject("http://localhost:6063/er_maps/getCompaniesForExchangeId/"+id, List.class);
+        CompanyDTO companyDTO;
+        System.out.println(ls);
+        for(int cid:ls){
+
+            companyDTO=restTemplate.getForObject("http://localhost:6061/company/getCompanyById/"+ cid, CompanyDTO.class);
+            dtols.add(companyDTO);
+        }
+        return dtols;
     }
 }

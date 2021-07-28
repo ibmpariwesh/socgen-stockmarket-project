@@ -4,6 +4,7 @@ import "./LoginPage.css";
 import { AwesomeButton } from "react-awesome-button";
 import "react-awesome-button/dist/styles.css";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, Route } from "react-router-dom";
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 import AdminLanding from "../AdminPage/AdminLanding";
@@ -49,10 +50,10 @@ function LoginPage() {
           jwtToken: result,
         });
         setBadCreds(false);
-        if (jwt_decode(result).sub === "user") {
+        if (jwt_decode(result).authority[0].authority === "ROLE_USER") {
           setShowUserLanding(true);
         }
-        if (jwt_decode(result).sub === "admin") {
+        if (jwt_decode(result).authority[0].authority === "ROLE_ADMIN") {
           setShowAdminLanding(true);
         }
       })
@@ -72,30 +73,35 @@ function LoginPage() {
       });
   };
   const loginPage = (
-    <div className="blurred-box">
-      <div className="user-login-box">
-        {/* <span className="user-icon"></span> */}
-        <h2 className="login-head">Login</h2>
-        <label className="lbl-white">Username</label>
-        <input
-          className="user-password"
-          onChange={onUserNameChange}
-          type="text"
-        />
-        <label className="lbl-white">password</label>
-        <input
-          className="user-password1"
-          onChange={onPasswordChange}
-          type="password"
-        />
-        {badCreds && badCredAlert}
-        <AwesomeButton
-          type="primary green"
-          className="login-button"
-          onPress={onSubmit}
-        >
-          Login
-        </AwesomeButton>
+    <div>
+      <Link to="/signup">
+        <button className="btn btn-warning btn-sup"> Sign Up</button>
+      </Link>
+      <div className="blurred-box">
+        <div className="user-login-box">
+          {/* <span className="user-icon"></span> */}
+          <h2 className="login-head">Login</h2>
+          <label className="lbl-white">Username</label>
+          <input
+            className="user-password"
+            onChange={onUserNameChange}
+            type="text"
+          />
+          <label className="lbl-white">password</label>
+          <input
+            className="user-password1"
+            onChange={onPasswordChange}
+            type="password"
+          />
+          {badCreds && badCredAlert}
+          <AwesomeButton
+            type="primary green"
+            className="login-button"
+            onPress={onSubmit}
+          >
+            Login
+          </AwesomeButton>
+        </div>
       </div>
     </div>
   );

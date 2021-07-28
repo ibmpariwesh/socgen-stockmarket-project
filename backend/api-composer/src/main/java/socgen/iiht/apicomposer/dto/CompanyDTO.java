@@ -1,4 +1,4 @@
-package socgen.iiht.companyservice.dto;
+package socgen.iiht.apicomposer.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
