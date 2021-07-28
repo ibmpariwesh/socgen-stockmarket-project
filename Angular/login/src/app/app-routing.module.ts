@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { AddExchangeComponent } from './components/add-exchange/add-exchange.component';
 import { CompanyComponent } from './components/company/company.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { ExchangeComponent } from './components/exchange/exchange.component';
 import { HomeComponent } from './components/home/home.component';
 import { IpoComponent } from './components/ipo/ipo.component';
 import { LoginComponent } from './components/login/login.component';
@@ -18,7 +19,7 @@ const routes: Routes = [
   //{ path: 'addCompany', component: AddCompanyComponent },
   //{ path: 'updateCompany/:id', component: AddCompanyComponent },
   //{ path: 'comparison', component: ComparisonComponent },
-  //{ path: 'exchange', component: ExchangeComponent },
+  { path: 'exchange', component: ExchangeComponent },
   { path: 'addExchange', component: AddExchangeComponent },
   { path: 'ipo', component: IpoComponent },
   //{ path: 'addIpo', component: AddIpoComponent },

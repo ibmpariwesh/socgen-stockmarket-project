@@ -34,8 +34,9 @@ export class CompanyComponent implements OnInit {
 
   public getAllCompanies(){
     this.companyService.getAllCompanies().subscribe( allCompanies => {
-      //this.companies = JSON.parse(allCompanies);
+      this.companies = allCompanies;
       console.warn("get api data",JSON.stringify(allCompanies));
+      
     });
   }
 

@@ -15,14 +15,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.company.entity.Company;
+import com.company.repository.CompanyRepository;
 import com.company.service.CompanyService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
-@RequestMapping("/company")
+@CrossOrigin(origins="*")
+@RequestMapping("company")
 public class CompanyController {
 	@Autowired
 	private CompanyService companyService;
+	private CompanyRepository repo;
 	@GetMapping("")
 	public String CheckWork() {
 		return "Working Fine!";
@@ -41,6 +43,14 @@ public class CompanyController {
 	@PostMapping("/addCompany")
 	public ResponseEntity<Company> createCompany(@RequestBody Company company){
 		return ResponseEntity.ok(companyService.createCompany(company));
+	}
+	
+	@PostMapping("/check")
+	public Company vcs(@RequestBody Company company) {
+		
+		repo.save(company);
+		//companyService.createCompany(company);
+		return company;
 	}
 	
 	@PutMapping("/updateCompany/{id}")

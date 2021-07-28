@@ -3,12 +3,8 @@ export interface Exchange{
     name:string;
     brief:string;
     remarks:string;
-    address:{
-      id?:number,
-      street:string,
-      city:string,
-      country:string,
-      zipCode:number
-    }
+    address:string;
+     
+    }{
   }
   

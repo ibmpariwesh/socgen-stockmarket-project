@@ -28,11 +28,10 @@ export class CompanyService {
     return this.httpClient.get('http://localhost:8084/company/getCompany')
   }
 
-  public getAllCompanies()
-  //:Observable<Company[]>
+  public getAllCompanies():Observable<Company[]>
   {
    // return this.httpClient.get<Company[]>(this.apiPaths.getAllCompanies);
-   return this.httpClient.get('http://localhost:8084/company/getCompany');
+   return this.httpClient.get<Company[]>('http://localhost:8084/company/getCompany');
   }
 
   public getCompanyByName(pattern:string):Observable<Company[]>{

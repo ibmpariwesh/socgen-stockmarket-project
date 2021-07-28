@@ -24,6 +24,6 @@ export class LoginComponent implements OnInit {
 
   onSubmit(){
     this.authService.authenticate(this.username, this.password);
-    this.router.navigate(['/']);
+    this.router.navigate(['']);
   }
 }

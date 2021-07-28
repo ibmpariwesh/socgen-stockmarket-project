@@ -1,5 +1,6 @@
 package com.company.entity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -20,7 +21,11 @@ public class Company {
 	
 	private String brief;
 	private String bod;
-	
+	@ManyToOne
+	private Sector sector;
+	public Company() {
+		super();
+	}
 	public Company(int id, String name, long turnover, String ceo, String brief, String bod, Sector sector) {
 		super();
 		this.id = id;
@@ -32,12 +37,9 @@ public class Company {
 		this.sector = sector;
 	}
 
-	@ManyToOne
-	private Sector sector;
+	
 
-	public Company() {
-		super();
-	}
+	
 	
 	public int getId() {
 		return id;

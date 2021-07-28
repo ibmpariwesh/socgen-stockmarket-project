@@ -21,7 +21,7 @@ export class ExchangeService {
   }
 
   public getAllExchanges():Observable<Exchange[]>{
-    return this.httpClient.get<Exchange[]>(this.apiPaths.getAllExchanges);
+    return this.httpClient.get<Exchange[]>('http://localhost:9090/stockExchange/exchanges');
   }
 
   public addExchange(exchange:Exchange):Observable<Exchange>{
@@ -30,7 +30,7 @@ export class ExchangeService {
         'Content-Type':  'application/json'
       })
     };
-    return this.httpClient.post<Exchange>(this.apiPaths.addExchange, exchange, httpOptions);
+    return this.httpClient.post<Exchange>('http://localhost:9090/stockExchange/exchanges', exchange, httpOptions);
   }
 
 }

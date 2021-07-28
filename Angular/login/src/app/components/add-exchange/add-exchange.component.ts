@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Exchange } from 'src/app/models/exchange-model';
+import { AuthService } from 'src/app/services/auth.service';
+import { ExchangeService } from 'src/app/services/exchange.service';
 
 @Component({
   selector: 'app-add-exchange',
@@ -7,9 +11,29 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AddExchangeComponent implements OnInit {
 
-  constructor() { }
+  public state:string;
+  public exchange:Exchange;
+
+  constructor(private authService:AuthService, private exchangeService:ExchangeService, private router: Router) {
+    this.state="";
+    this.exchange={
+      "id":0,
+      "name":"",
+      "brief": "",
+      "address": "",
+      "remarks":"Remark 3"
+    }
+  }
 
   ngOnInit(): void {
+    this.state = this.authService.getCurrentUserRole();
+  }
+  addExchange(){
+    this.exchangeService.addExchange(this.exchange).subscribe(exchange => {
+      console.log("Exchange Added");
+      console.log(exchange);
+    });
+    this.router.navigate(['/exchange']);
   }
 
 }
