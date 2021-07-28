@@ -36,6 +36,11 @@ public class ExcelController {
 	public String check() {
 		return "Successful Hit";
 	}
+	@PostMapping("/check")
+	public ExcelDto xcs(@RequestBody ExcelDto data) {
+		return data;
+	}
+	
 	@PostMapping("/uploadData")
 	public ResponseEntity<List<ExcelDto>> addExcelData(@RequestBody List<ExcelDto> data) {
 		String apiUrl = "http://company-service/company/addStockPrices";

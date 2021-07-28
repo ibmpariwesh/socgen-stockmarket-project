@@ -23,7 +23,8 @@ public class Company {
 	
 	private boolean listedinstockexchange;
 	
-	
+	@ManyToOne
+	private Sector sector;
 
 	public Company(int id, String name, long turnover, String ceo, String about, boolean listedinstockexchange,
 			Sector sector) {
@@ -37,8 +38,7 @@ public class Company {
 		this.sector = sector;
 	}
 
-	@ManyToOne
-	private Sector sector;
+	
 
 	public Company() {
 		super();

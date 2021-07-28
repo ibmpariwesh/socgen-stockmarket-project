@@ -12,9 +12,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 @Entity
-
 public class Sector {
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
@@ -69,5 +68,5 @@ public class Sector {
 	public void setBrief(String brief) {
 		this.brief = brief;
 	}
-
+	
 }

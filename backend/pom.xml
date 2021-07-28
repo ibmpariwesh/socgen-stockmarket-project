@@ -58,6 +58,7 @@
 		<module>api-gateway-service</module>
 		<module>apigateway-service</module>
 		<module>config-service</module>
+		<module>user-service</module>
 	</modules>
 	<build>
 		<plugins>

@@ -1,8 +1,9 @@
 package com.excelservice.dto;
 
-import java.security.Timestamp;
-import java.sql.Date;
+
 import java.sql.Time;
+
+import java.util.Date;
 
 public class ExcelDto {
 	private int companyId;
@@ -11,23 +12,34 @@ public class ExcelDto {
 	
 	private double price;
 	
-	private Timestamp timestamp;
+	//private Timestamp timestamp;
+	private Date date;
+	public ExcelDto(int companyId, int exchangeId, double price, Date date, Time time) {
+		super();
+		this.companyId = companyId;
+		this.exchangeId = exchangeId;
+		this.price = price;
+		this.date = date;
+		this.time = time;
+	}
+
+	private Time time;
 	
 	
 	public ExcelDto() {
 		super();
 	}
 	
-public ExcelDto(int companyId, int exchangeId, double price, Timestamp timestamp) {
-		super();
-		this.companyId = companyId;
-		this.exchangeId = exchangeId;
-		this.price = price;
-		this.timestamp = timestamp;
-		
-	}
+//public ExcelDto(int companyId, int exchangeId, double price,Timestamp timestamp) {
+//		super();
+//		this.companyId = companyId;
+//		this.exchangeId = exchangeId;
+//		this.price = price;
+//	this.timestamp = timestamp;
+//		
+//	}
 
-
+//Timestamp timestamp
 	
 	public int getCompanyId() {
 		return companyId;
@@ -54,12 +66,28 @@ public ExcelDto(int companyId, int exchangeId, double price, Timestamp timestamp
 		this.price = price;
 	}
 
-	public Timestamp getTimestamp() {
-		return timestamp;
+	public Date getDate() {
+		return date;
 	}
 
-	public void setTimestamp(Timestamp timestamp) {
-		this.timestamp = timestamp;
+	public void setDate(Date date) {
+		this.date = date;
 	}
+
+	public Time getTime() {
+		return time;
+	}
+
+	public void setTime(Time time) {
+		this.time = time;
+	}
+
+//	public Timestamp getTimestamp() {
+//		return timestamp;
+//	}
+//
+//	public void setTimestamp(Timestamp timestamp) {
+//		this.timestamp = timestamp;
+//	}
 
 }
